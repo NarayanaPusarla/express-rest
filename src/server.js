@@ -1,9 +1,19 @@
 var express = require('express')
 var app = express()
 let authRouter = require("../src/routes/auth");
+//const db = require("modules");
+const db = require("./models");
 
 app.use(express.json());
 app.use('/auth', authRouter);
+
+// db.sequelize.sync()
+
+db.sequelize.sync().then( () => {
+    console.log("Sunc db")
+}).catch((err) => {
+    console.log("failed to sync" + err.message);
+});
 
 app.get('/', function(req, res){
     res.send('Hello World');

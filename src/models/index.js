@@ -1,3 +1,4 @@
+const sequelize = require('sequelize');
 const Sequelize = require('sequelize');
 const dbConfigs = require("../configs/db_config");
 
@@ -18,5 +19,7 @@ const testConnect = async()=> {
 
 const db = {};
 db.Sequelize = Sequelize;
-db.Sequelize = dbConnect;
-module.exports = dbConnect;
+db.sequelize = dbConnect;
+
+db.users = require("./User.js")(dbConnect, Sequelize)
+module.exports = db;

@@ -1,17 +1,14 @@
-const { Model, DataTypes} = require('sequelize');
-const dbConnect = require("./index");
-
-class User extends Model {}
-User.init({
-    first_name : {
-        type : DataTypes.string,
-        allowNull : false
-    },
-    last_name : {
-        type : DataTypes.string,
-        allowNull : false
-    },
-}, {
-    dbConnect,
-    modelName : 'User'
-})
+module.exports = (sequlize, Sequlize) => {
+    const User = sequlize.define("user", {
+        first_name : {
+            type : Sequlize.STRING
+        },
+        last_name : {
+            type : Sequlize.STRING
+        },
+        email : {
+            type : Sequlize.STRING
+        }
+    });
+    return User;
+}
