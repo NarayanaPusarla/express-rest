@@ -4,11 +4,8 @@ const login = {
     doLogin: async (req,res) => {
         try{
             let resp = await loginService.attemptLogin(req.body);
-            console.log("return");
-            if(resp) {
-                return {
-                    status : "success"
-                }
+            if(resp.status) {
+                return resp;
             } else {
                 return {
                     status : 'success',
