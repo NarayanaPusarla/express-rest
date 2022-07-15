@@ -21,5 +21,6 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = dbConnect;
 
+//load models
 db.user = require("./User.js")(dbConnect, Sequelize)
 module.exports = db;

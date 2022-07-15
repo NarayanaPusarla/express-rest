@@ -11,10 +11,10 @@ app.use('/auth', authRouter);
 app.use(verifyAuth);
 app.use('/user', userRouter);
 
-// db.sequelize.sync()
+// automatically create tables which are loaded models/index.js file
 
 db.sequelize.sync().then( () => {
-    console.log("Sunc db")
+    console.log("Sync db")
 }).catch((err) => {
     console.log("failed to sync" + err.message);
 });
