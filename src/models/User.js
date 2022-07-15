@@ -11,7 +11,11 @@ module.exports = (sequlize, Sequlize) => {
         },
         password : {
             type : Sequlize.STRING,
-            allowNull : true
+            allowNull : false
+        },
+        salt : {
+            type : Sequlize.STRING,
+            allowNull : false
         }
     },{
         tableName : 'users'

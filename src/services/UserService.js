@@ -1,11 +1,15 @@
 const db = require("../models");
+const bcrypt = require('bcryptjs');
 
 const userService = {
     addUser : async (objData) => {
+        const strSalt = await bcrypt.genSaltSync(10);
         const  userObject = {
             'first_name' : objData.first_name,
             'last_name' : objData.last_name,
-            'email' : objData.email
+            'email' : objData.email,
+            'password' :  await bcrypt.hashSync(objData.password, strSalt), //objData.password,
+            'salt' : strSalt
         };
 
         const objUser = await db.user.create(userObject);
