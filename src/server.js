@@ -1,11 +1,13 @@
 var express = require('express')
 var app = express()
 let authRouter = require("../src/routes/auth");
+let userRouter = require("../src/routes/user");
 //const db = require("modules");
 const db = require("./models");
 
 app.use(express.json());
 app.use('/auth', authRouter);
+app.use('/user', userRouter);
 
 // db.sequelize.sync()
 
