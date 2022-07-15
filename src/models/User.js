@@ -8,6 +8,10 @@ module.exports = (sequlize, Sequlize) => {
         },
         email : {
             type : Sequlize.STRING
+        },
+        password : {
+            type : Sequlize.STRING,
+            allowNull : true
         }
     },{
         tableName : 'users'
