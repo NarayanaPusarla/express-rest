@@ -8,7 +8,7 @@ const login = {
                 return resp;
             } else {
                 return {
-                    status : 'success',
+                    status : resp.status,
                     message : "invalid password"
                 }
             }

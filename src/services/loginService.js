@@ -15,7 +15,7 @@ const loginService = {
             const isMatched = await bcrypt.compareSync(objData.password, objUser.password);
 
             if(isMatched) {
-                const JWTtoken = await jwt.sign({ email : objData.email}, 'sha256');
+                const JWTtoken = await jwt.sign({ email : objData.email}, 'secretKey');
 
                 return {
                     status : true,
