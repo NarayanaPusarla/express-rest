@@ -31,7 +31,20 @@ const loginService = {
                 status : false
             };
         }
-    }
+    },
+    verifyJWTToken :async (p_strToken) => {
+        let isTokenValid = false;
+        try{
+            JWTPayload = await jwt.verify(p_strToken, 'secretKey');
+            if(JWTPayload.email != '') {
+                isTokenValid = true;
+            }
+        } catch(error) {
+            isTokenValid = false;
+        }
+        
+        return isTokenValid;
+    } 
 }
 
 module.exports = loginService;
