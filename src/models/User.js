@@ -9,6 +9,8 @@ module.exports = (sequlize, Sequlize) => {
         email : {
             type : Sequlize.STRING
         }
+    },{
+        tableName : 'users'
     });
     return User;
 }

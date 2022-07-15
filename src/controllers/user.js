@@ -13,7 +13,7 @@ const user = {
     },
     getUser : async(req, res) => {
         try{
-            let resp = await userService.getUser(req.body);
+            let resp = await userService.getUser(req.params.id);
 
             return resp;
         } catch(error) {
@@ -22,7 +22,7 @@ const user = {
     },
     updateUser : async(req, res) => {
         try{
-            let resp = await userService.updateUser(req.body);
+            let resp = await userService.updateUser(req.params.id, req.body);
 
             return resp;
         } catch(error) {
@@ -31,7 +31,7 @@ const user = {
     },
     deleteUser : async (req, res) => {
         try{
-            let resp = await userService.deleteUser(req.body);
+            let resp = await userService.deleteUser(req.params.id);
 
             return resp;
         } catch(error) {

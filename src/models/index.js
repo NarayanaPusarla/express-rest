@@ -21,5 +21,5 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = dbConnect;
 
-db.users = require("./User.js")(dbConnect, Sequelize)
+db.user = require("./User.js")(dbConnect, Sequelize)
 module.exports = db;
