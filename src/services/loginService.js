@@ -15,7 +15,7 @@ const loginService = {
             const isMatched = await bcrypt.compareSync(objData.password, objUser.password);
 
             if(isMatched) {
-                const JWTtoken = await jwt.sign({ email : objData.email}, 'secretKey');
+                const JWTtoken = await jwt.sign({ email : objData.email}, 'secretKey',{ expiresIn: '1h' });
 
                 return {
                     status : true,
