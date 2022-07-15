@@ -25,11 +25,28 @@ const userService = {
             return { status : "success",  data : objUsers};
         }
     },
-    updateUser : (p_nUserID, objData) => {
-        return { status : "success", message : { data : "update user "}};
+    updateUser : async (p_nUserID, objData) => {
+        console.log(p_nUserID, objData);
+        const objUpdateObject = {
+            "first_name" : objData.first_name,
+            "last_name" : objData.last_name,
+            "email" : objData.email
+        };
+
+        await db.user.update( objUpdateObject , {
+            where :{
+                id : p_nUserID
+            }
+        })
+        return { status : "success", message : "user "+p_nUserID+" updated"};
     },
-    deleteUser : (p_nUserID) => {
-        return { status : "success", message : { data : "delete user "}};
+    deleteUser : async (p_nUserID) => {
+        await db.user.destroy({
+            where: {
+                id : p_nUserID
+            }
+        });
+        return { status : "success", message :"user "+p_nUserID+" deleted"};
     }
 }
 
