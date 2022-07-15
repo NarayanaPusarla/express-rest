@@ -1,7 +1,20 @@
+const { user } = require("../models");
+const bcrypt = require("bcryptjs");
+
 const loginService = {
-    attemptLogin : (objData) => {
+    attemptLogin : async (objData) => {
         
-        return { status : "success", message : { data : "welcome to new system "+ objData.name}};
+        const objUser = await user.findOne({
+            where : {
+                'email' : objData.email
+            }
+        });
+        
+        if(objUser.password != 'null' && objUser.password != null && objUser.password != '' ) {
+            return await bcrypt.compareSync(objData.password, objUser.password);
+        } else {
+            return false;
+        }
     }
 }
 
