@@ -13,7 +13,7 @@ const userService = {
         };
 
         const objUser = await db.user.create(userObject);
-        return { status : "success", message : { data : "User created successfully with id : " + objUser.id}};
+        return { status : "success", message : "User created successfully", id : objUser.id};
     },
     getUser : async (p_nUserID) => {
         console.log(p_nUserID);

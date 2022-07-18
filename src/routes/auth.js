@@ -7,4 +7,9 @@ router.post('/login', async function(req, res, next){
     res.status(200).json(resp);
 })
 
+router.post('/signup', async function(req, res, next) {
+    const resp = await login.signUp(req);
+    res.status(200).json(resp);
+})
+
 module.exports = router;
