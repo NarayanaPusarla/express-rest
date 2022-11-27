@@ -12,7 +12,7 @@ app.use(express.json());
 app.use('/auth', authRouter);
 
 // call middleware -> to verify jwt auth token.
-//app.use(verifyAuth);
+app.use(verifyAuth);
 app.use('/user', userRouter);
 
 // automatically create tables which are loaded models/index.js file
