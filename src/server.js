@@ -1,15 +1,18 @@
 var express = require('express')
+var cors = require('cors')
 var app = express()
 let authRouter = require("../src/routes/auth");
 let userRouter = require("../src/routes/user");
 const verifyAuth = require('./middleware/verifyAuth');
 const db = require("./models");
 
+app.use(cors());
+
 app.use(express.json());
 app.use('/auth', authRouter);
 
 // call middleware -> to verify jwt auth token.
-app.use(verifyAuth);
+//app.use(verifyAuth);
 app.use('/user', userRouter);
 
 // automatically create tables which are loaded models/index.js file
