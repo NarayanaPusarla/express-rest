@@ -23,6 +23,7 @@ app.get('/', function(req, res){
     res.send('Hello World');
 })
 
+// to start server -> npm run start
 var server = app.listen(8081, function(){
     var host = server.address().address
     var port = server.address().port
